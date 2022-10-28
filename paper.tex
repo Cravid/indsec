@@ -1,47 +1,41 @@
-\documentclass[12pt,oneside,a4paper]{article}
+\documentclass[conference]{IEEEtran}
 \usepackage[utf8]{inputenc}
-\usepackage[english,ngerman]{babel}
+\usepackage[german]{babel}
+
 \usepackage{graphicx}
-\usepackage{fancyhdr}
+\graphicspath{figures/}
 
-%\pagestyle{fancy}
-
-
-%\fancyhf{}
-%\lhead{\textbf{Hochschule Wismar} \\
-%			University of Applied Sciences \\
-%			Technology, Business and Design \\
-%			Fakult\"at f\"ur Ingenieurwissenschaften, Bereich EuI \\}
-%\rhead{\includegraphics[height=6\baselineskip,right]{bilder/HS-Wismar_Logo-FIW_2010-01.jpg}}
-%\setlength{\headheight}{2.5cm}
+\makeatletter
+\let\@copyrightspace\relax
+\makeatother
 
 \begin{document}
-\title{Mac Authentication Bypass}
-\begin{tiny}
-\author{David Schunke, Umut-Vural Mitiler \\
-\\
-Hochschule Wismar \\
-University of Applied Sciences, Technology
+
+\title{MAC Authentication Bypass}
+\author{
+Umut-Vural Mitiler, David Schunke\\
+Hochschule Wismar - Master IT-Sicherheit und Forensik\\
+Industrial Security - Gruppe FFM-08
 }
-\end{tiny}
-\date{} 
 
-\maketitle 
-%Mac Authentication Bypass
-%Industrie 4.0
-%Heterogene Landschaft
-%Skalierbares Netzwerk
+\maketitle
 
-
-\begin{center}
-\textbf{Abstract}\\
-\end{center}
-\\
-
+\begin{abstract}
+Hier kommt ein abstract.
+\end{abstract}
 
 \section{MAB Übersicht}
-Hier kommt alles bezüglich Einleitung MAB
+Lorem Ipsum \cite{einstein} is simply dummy text of the printing and typesetting industry.
 
+\begin{figure}[hbt]
+  \centering
+  \includegraphics[width=8cm]{figures/Radius}
+  \caption{Foobar \cite{einstein}}
+\end{figure}
+
+
+\subsection{Foobar}
+Hier kommt alles bezüglich Einleitung MAB foobar
 %MAB Cisco Link
 %Layer 2 Security Link?
 %RADIUS vllt
@@ -50,7 +44,6 @@ Hier kommt alles bezüglich Einleitung MAB
 Hier kommt alles bezüglich Einsatz in der heutigen Zeit
 %Fallback
 %Drucker, Telefone, IP-Phones, Kameras
-
 
 \section{Relevanz von MAB in Industrie 4.0}
 Hier kommt alles zur Relevanz von Industrie 4.0
@@ -70,15 +63,7 @@ Hier kurz was MAB in der Industrie 4.0 für Netzwerke bedeutet und wie es nicht 
 %Zukunft und Vergangenheit
 
 
-
-
-
-
-
-\begin{thebibliography}{unsrt}
-
-\end{thebibliography}
- 
-
+\bibliographystyle{IEEEtran}
+\bibliography{paper}
 
 \end{document}
