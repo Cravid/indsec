@@ -37,6 +37,8 @@
 Eine kurze Beschreibung des Papers, worum gehts, was wird erklärt, was ist das Resultat.
 \end{abstract}
 
+\vspace{1em}
+
 \begin{IEEEkeywords}
 Foo, bar	
 \end{IEEEkeywords}
@@ -44,13 +46,29 @@ Foo, bar
 %
 
 \section{Einleitung}
-Grundsätzliche Motviation für das Thema
+Grundsätzliche Motviation für das Thema, was ist Industrie 4.0 und was ist NAC\\
 
-\subsection{Industrie 4.0}
-Beschreibung von Industrie 4.0, was bedeutet es, worum gehts
+Die fortschreitende Vernetzung von IT Systemen bahnt sich ihren weg durch alle Bereiche unseres Lebens. Während ständige Vernetzung im Privaten- sowie Dienstleistungsumfeld heute alltäglich für uns sind, ist in der Industrie ein solcher Grad an Vernetzung noch nicht angekommen. So sind häufig im industriellen Umfeld noch Maschinen oder Systeme eingesetzt, welche aufgrund ihres Alters gar keine Vernetzung und Kommunikation erlauben, als auch existierende Vernetzungen lediglich für eine einfachste Form der Kommunikation, wie z.B. Systemüberwachung, eingesetzt.\\
 
-\subsection{Network Access Control}
-Beschreibung was NAC ist, was ist die Motivation, was soll das Ganze
+Industrie 4.0 stellt die aktuellste und vierte Stufe der industriellen Revolution dar. Nachdem die erste industrielle Revolution durch die Mechanisierung von Arbeitsprozessen, die zweite industrielle Revolution durch den Einsatz technischer Hilfsmittel zur Massenproduktion, und die dritte industrielle Revolution erste digitale Hilfsmittel zur Automatisierung geprägt waren, werden in der vierten industriellen Revolution alle Komponenten digitalisiert, vollumfänglich vernetzt als auch mit Intelligenz versehen, sodass diese Komponenten teils vollautonom dezentrale Entscheidungen treffen und untereinander Kommunizieren können. Der Mensch interagiert nur noch eingeschränkt und teilweise über neuartige Schnittstellen (human-computer-interfaces, HCI) mit den Systemen, um diese z.B. bei Konflikten oder benötigten Entscheidungen anzuleiten. Solche Systeme werden Cyberphysische Systeme (CPS) genannt und bilden das Rückgrat der Industrie 4.0.\\
+% TODO Referenz zu den Stufen, HCI, CPS %
+
+Mit Vernetzung und Kommunikation werden gleichzeitig solche Systeme allerdings auch stärker angreifbar und bedingen weitergehender Schutzmechanismen. Während in Office- oder User-Netzwerken
+%TODO Footnote%
+Technologien und Protokolle zur Absicherung der Kommunikation bereits lange zum Standard gehören, sind die in der Industrie noch häufig eingesetzten Systeme und Protokolle auf eine Absicherung noch nicht ausgelegt. Gefahren bilden hierbei u.A.
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
+	\item Industriespionage durch Abfangen von Kommunikation oder eindringen in Systeme (Angriff auf Vertraulichkeit)
+	\item Manipulation von Kommunikation, z.B. Steuerbefehlen (Angriff auf die Integrität)
+	\item Störung der (Echtzeit-)Kommunikation bis hin zu Denial-of-Service (DoS), sodass ein System komplett ausfällt (Angriff auf die Verfügbarkeit)
+	\item Übernahme (Hijacking) von Systemen und missbräuchliche Verwendung oder Erpressung
+\end{enumerate}
+
+Die verschiedenen Gefahren stellen für die unterschiedlichen Zweige der Industrie auch unterschiedliche Schweregrade dar, sind jedoch in der Industrie 4.0 für alle Bereiche ein hochwichtiges Thema.\\
+
+Ein zentraler Teil zur Absicherung gegen solche Gefahren besteht darin, wer überhaupt Zugang zu einem Netzwerk hat, analog zur Absicherung, wer überhaupt physisch Zugang zu einer Anlage hat. Hierbei haben sich in der Office-IT bereits unterschiedliche Strategien und Technologien gebildet, um eine Netzwerkzugangskontrolle (Network Access Acontrol, NAC)
+% hier Footnote lieber oder so stehen lassen zu NAC? %
+zu realisieren. Aufgrund des Alters vieler Systeme in der Industrie können diese Technologien allerdings nicht immer einfach übertragen werden, ohne Probleme in der Kompatibilität hervorzurufen, gleichzeitig aber auch nicht einfach durch neue Systeme ausgetauscht werden. Aus diesem Grund werden für solche Systeme Fallback-Lösungen benötigt, sodass diese Systeme trotz Netzwerkzugangskontrolle am Netzwerk und der Kommunikation teilnehmen können. Eine solche Technologie stellt das MAC Authentication Bypass (MAB) dar.
 
 %
 
