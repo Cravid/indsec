@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 
+\usepackage{hyperref}
+
 \usepackage{graphicx}
 \graphicspath{figures/}
 
@@ -89,23 +91,25 @@ Aus diesem Grund werden für solche Systeme Fallback-Lösungen benötigt, sodass
 Zur Realisierung der Netzwerkzugangskontrolle wird eine zentrale Authentifizierungsstelle (Authentication Server) eingesetzt, sogenannte AAA-Server (Authentication, Authorization, Accounting). Jede Netzwerkkomponente (Authenticator), z.B. Router oder Switch, vergewissert sich bei ankommendem Netzwerkverkehr beim Authentication Server darüber, ob der Sender (Supplicant) authorisiert ist am Netzwerk teilzunehmen. Das \emph{Institute of Electrical and Electronics Engineers (IEEE)} hat hierfür den Standard \emph{IEEE802.1X} entwickelt, welcher wiederum die Nutzung des \emph{Extensible Authentication Protocol (EAP)} empfiehlt und somit quasi eine Verkapselung des EAP in einem Standard darstellt, weshalb im Folgenden zunächst das EAP erläutert wird.
 
 \subsection{Extensible Authentication Protocol (EAP)}
-Das EAP (RFC 3748 \cite{aboba2004extensible}) ist ein von der Internet Engineering Task Force (IETF) entwickeltes Framework zur Implementierung von Authentifizierung in Netzwerken. Es stellt Funktionen für verschiedene Authentifizierungsmethoden bereit, z.B. EAP-SIM, EAP-TTLS oder EAP-over-LAN (EAPOL). \cite{1561920} In Abbildung 1 wird EAP als Abstraktionsebene dargestellt.\\
+Das EAP (RFC 3748 \cite{aboba2004extensible}) ist ein von der Internet Engineering Task Force (IETF) entwickeltes Framework zur Implementierung von Authentifizierung in Netzwerken. Es stellt Funktionen für verschiedene Authentifizierungsmethoden bereit, z.B. EAP-SIM, EAP-TTLS oder EAP-over-LAN (EAPOL). \cite{1561920} In \autoref{fig:eap} wird EAP als Abstraktionsebene dargestellt.\\
 
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=9cm]{figures/EAP}
 	\caption{EAP als Abstraktionsebene zur Authentifizierung. \cite{1561920}}
+	\label{fig:eap}
 \end{figure}
 
 EAP wurde zur Unterstützung von Authentifizierung in Netzwerke geschaffen, ohne dass  bei einer neuen Authentifizierung die Infrastruktur angepasst werden müsste. Es erlaubt den Einsatz eines Authentication Servers (AAA) und implementiert die Prozesse zwischen Supplicant, Authenticator und Authentication Server. Hierbei können auch mehrere Methoden in Folge genutzt werden und erlaubt so heterogene Netzwerke. Nach Authentifizierungsanfrage (Authentication Request) vom Authenticator an den Supplicant sendet dieser eine Antwort, welche die konkrete Authentifizierung (Benutzer, Password, Zertifikat, etc.) enthält. Der Authenticator erfragt beim Authentication Server die Authentifizierung und schließt den Prozess mit einer Success- oder Failure-Response an den Supplicant ab.
 
 \subsection{IEEE802.1X}
-Der IEEE802.1X (kurz auch dot1x genannt) ist Teil der IEEE802.1 Gruppe von Standards. Es dient zur port-based Network Access Control (PNAC) und definiert Authentifizierungsmechanismen für LAN und WLAN. Hierzu setzt es auf das EAP over LAN (EAPOL) auf. In Abbildung 2 wird die Funktionsweise und die einzelnen Parteien in dot1x dargestellt.\\
+Der IEEE802.1X (kurz auch dot1x genannt) ist Teil der IEEE802.1 Gruppe von Standards. Es dient zur port-based Network Access Control (PNAC) und definiert Authentifizierungsmechanismen für LAN und WLAN. Hierzu setzt es auf das EAP over LAN (EAPOL) auf. In \autoref{fig:dot1x} wird die Funktionsweise und die einzelnen Parteien in dot1x dargestellt.\\
 
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=9cm]{figures/dot1x}
 	\caption{IEEE802.1X schrittweise in den einzelnen Parteien dargestellt.}
+	\label{fig:dot1x}
 \end{figure}
 
 Ports werden hierbei in zwei logische Einheiten unterteilt: (1) kontrollierte Ports und (2) unkontrollierte Ports.\\
@@ -113,22 +117,24 @@ Kontrollierte Ports werden durch die dot1x PAE (Port Access Entity) gesteuert un
 Unkontrollierte Ports werden durch die dot1x PAE zur Übermittlung von EAPOL Paketen verwendet.
 
 \subsection{RADIUS und Active Directory}
-Oft als konkrete Implementierung eingesetzt werden RADIUS (Remote Authentication Dial-In User Service) oder Microsoft Active Directory. Diese bieten zentralisierte AAA-Server und sind dot1x konform, unterstützen also EAPOL. In Abbildung 3 wird der Authentifizierungsprozess in Request / Response dargestellt.
+Oft als konkrete Implementierung eingesetzt werden RADIUS (Remote Authentication Dial-In User Service) oder Microsoft Active Directory. Diese bieten zentralisierte AAA-Server und sind dot1x konform, unterstützen also EAPOL. In \autoref{fig:radius} wird der Authentifizierungsprozess in Request / Response dargestellt.
 
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=9cm]{figures/radius}
 	\caption{RADIUS Authentifizierung.}
+	\label{fig:radius}
 \end{figure}
 
 \subsection{Technische Umsetzung von MAB}
-Aufgrund des Alters oder der sehr spezifischen Kosten-optimierten Implementierung vieler in der Industrie noch eingesetzter Systeme, Sensoren, usw. unterstützen einige dieser Systeme IEEE802.1X und EAP (z.B. RADIUS) nicht. Um diesen dennoch die Authentifizierung auf einem Port zu ermöglichen, kann das MAC Authentication Bypass (MAB) eingesetzt werden.\\
-Abbildung 4 stellt den Netzwerkverkehr an einem Authenticator vor und nach MAB dar.
+MAB wird meistens als Fallback für EAP / dot1x, also z.B. RADIUS, eingesetzt. Versucht ein Supplicant sich neu zu authentifizieren wird zunächst sein Netzwerkverkehr geblockt. Der Authenticator versucht nun 
+\autoref{fig:mab-before-after} stellt den Netzwerkverkehr an einem Authenticator vor und nach MAB dar.
 
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=9cm]{figures/mab-before-after}
 	\caption{Traffic an einem Authenticator vor und nach MAB.}
+	\label{fig:mab-before-after}
 \end{figure}
 
 - neuer unbekannter Supplicant
@@ -148,10 +154,13 @@ Abbildung 4 stellt den Netzwerkverkehr an einem Authenticator vor und nach MAB d
 - Supplicant ist auf Port authentifiziert, state authorized
 - kann nun kommunizieren
 
+
+
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=9cm]{figures/mab-fallback}
 	\caption{MAB als Fallback für RADIUS.}
+	\label{fig:mab-fallback}
 \end{figure}
 
 %
