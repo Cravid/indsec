@@ -4522,7 +4522,7 @@ between column types.}%
 % 
 % \IEEEmembership is used to produce the sublargesize italic font used to indicate author 
 % IEEE membership. compsoc uses a large size sans slant font
-\def\IEEEmembership#1{{\@IEEEnotcompsoconly{\sublargesize}\normalfont\@IEEEcompsoconly{\sffamily}\textit{#1}}}
+\def\IEEEmembership#1{{\@IEEEnotcompsoconly{\sublargesize}\normalfont\@IEEEcompsoconly{\sffamily}\emph{#1}}}
  
 
 % \IEEEauthorrefmark{} produces a footnote type symbol to indicate author affiliation.
@@ -5274,7 +5274,7 @@ between column types.}%
 % so that spacing is more tightly controlled.
 \def\abstract{\normalfont
     \if@twocolumn
-      \@IEEEabskeysecsize\bfseries\textit{\abstractname}---\relax
+      \@IEEEabskeysecsize\bfseries\emph{\abstractname}---\relax
     \else
       \bgroup\par\addvspace{0.5\baselineskip}\centering\vspace{-1.78ex}\@IEEEabskeysecsize\textbf{\abstractname}\par\addvspace{0.5\baselineskip}\egroup\quotation\@IEEEabskeysecsize
     \fi\@IEEEgobbleleadPARNLSP}
@@ -5285,7 +5285,7 @@ between column types.}%
 
 \def\IEEEkeywords{\normalfont
     \if@twocolumn
-      \@IEEEabskeysecsize\bfseries\textit{\IEEEkeywordsname}---\relax
+      \@IEEEabskeysecsize\bfseries\emph{\IEEEkeywordsname}---\relax
     \else
       \bgroup\par\addvspace{0.5\baselineskip}\centering\@IEEEabskeysecsize\textbf{\IEEEkeywordsname}\par\addvspace{0.5\baselineskip}\egroup\quotation\@IEEEabskeysecsize
     \fi\@IEEEgobbleleadPARNLSP}
@@ -5298,14 +5298,14 @@ between column types.}%
   \ifCLASSOPTIONconference% compsoc conference
 \def\abstract{\normalfont\@IEEEtweakunitybaselinestretch{1.15}\bfseries
     \if@twocolumn
-      \@IEEEabskeysecsize\noindent\textit{\abstractname}---\relax
+      \@IEEEabskeysecsize\noindent\emph{\abstractname}---\relax
     \else
       \bgroup\par\addvspace{0.5\baselineskip}\centering\vspace{-1.78ex}\@IEEEabskeysecsize\textbf{\abstractname}\par\addvspace{0.5\baselineskip}\egroup\quotation\@IEEEabskeysecsize%
     \fi\@IEEEgobbleleadPARNLSP}
 \def\IEEEkeywords{\normalfont\@IEEEtweakunitybaselinestretch{1.15}\bfseries
     \if@twocolumn
       \@IEEEabskeysecsize\vskip 0.5\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip\noindent
-      \textit{\IEEEkeywordsname}---\relax
+      \emph{\IEEEkeywordsname}---\relax
     \else
       \bgroup\par\addvspace{0.5\baselineskip}\centering\@IEEEabskeysecsize\textbf{\IEEEkeywordsname}\par\addvspace{0.5\baselineskip}\egroup\quotation\@IEEEabskeysecsize%
     \fi\@IEEEgobbleleadPARNLSP}
@@ -5339,7 +5339,7 @@ between column types.}%
 
 \def\IEEEkeywords{\normalfont\parindent 1em\relax
     \if@twocolumn
-      \@IEEEabskeysecsize\vspace{1\baselineskip}\bfseries\indent\textit{\IEEEkeywordsname}---\relax
+      \@IEEEabskeysecsize\vspace{1\baselineskip}\bfseries\indent\emph{\IEEEkeywordsname}---\relax
     \else
       \bgroup\par\vspace{1\baselineskip}\centering\@IEEEabskeysecsize
       \textbf{\IEEEkeywordsname}\par\addvspace{0.5\baselineskip}\egroup\quotation\@IEEEabskeysecsize
@@ -5566,13 +5566,13 @@ between column types.}%
 \def\@begintheorem#1#2{\@IEEEtmpitemindent\itemindent\relax
     \topsep 0.2\@IEEEnormalsizeunitybaselineskip plus 0.26\@IEEEnormalsizeunitybaselineskip minus 0.05\@IEEEnormalsizeunitybaselineskip
     \rmfamily\trivlist\hangindent\parindent%
-    \item[]\textit{\bfseries\noindent #1\ #2.} \itemindent\@IEEEtmpitemindent\relax}
+    \item[]\emph{\bfseries\noindent #1\ #2.} \itemindent\@IEEEtmpitemindent\relax}
 \def\@opargbegintheorem#1#2#3{\@IEEEtmpitemindent\itemindent\relax
 \topsep 0.2\@IEEEnormalsizeunitybaselineskip plus 0.26\@IEEEnormalsizeunitybaselineskip minus 0.05\@IEEEnormalsizeunitybaselineskip
 \rmfamily\trivlist\hangindent\parindent%
 % V1.6 The IEEE is back to using () around theorem names which are also in italics
 % Thanks to Christian Peel for reporting this.
-    \item[]\textit{\bfseries\noindent #1\ #2\ (#3).} \itemindent\@IEEEtmpitemindent\relax}
+    \item[]\emph{\bfseries\noindent #1\ #2\ (#3).} \itemindent\@IEEEtmpitemindent\relax}
 % V1.7 remove bogus \unskip that caused equations in theorems to collide with
 % lines below.
 \def\@endtheorem{\endtrivlist\vskip 0.25\@IEEEnormalsizeunitybaselineskip plus 0.26\@IEEEnormalsizeunitybaselineskip minus 0.05\@IEEEnormalsizeunitybaselineskip}
@@ -5583,11 +5583,11 @@ between column types.}%
 % V1.8 allow long theorem names to break across lines.
 % Thanks to Miquel Payaro for reporting this.
 \def\@begintheorem#1#2{\@IEEEtmpitemindent\itemindent\relax\topsep 0pt\rmfamily\trivlist%
-    \item[]\textit{\indent #1\ #2:} \itemindent\@IEEEtmpitemindent\relax}
+    \item[]\emph{\indent #1\ #2:} \itemindent\@IEEEtmpitemindent\relax}
 \def\@opargbegintheorem#1#2#3{\@IEEEtmpitemindent\itemindent\relax\topsep 0pt\rmfamily \trivlist%
 % V1.6 The IEEE is back to using () around theorem names which are also in italics
 % Thanks to Christian Peel for reporting this.
-    \item[]\textit{\indent #1\ #2\ (#3):} \itemindent\@IEEEtmpitemindent\relax}
+    \item[]\emph{\indent #1\ #2\ (#3):} \itemindent\@IEEEtmpitemindent\relax}
 % V1.7 remove bogus \unskip that caused equations in theorems to collide with
 % lines below.
 \def\@endtheorem{\endtrivlist}
@@ -6103,9 +6103,9 @@ between column types.}%
 % for special papers, like invited papers, the user can do:
 % \IEEEspecialpapernotice{(Invited Paper)} before \maketitle
 \def\IEEEspecialpapernotice#1{\ifCLASSOPTIONconference%
-\def\@IEEEspecialpapernotice{{\sublargesize\textit{#1}\vspace*{1em}}}%
+\def\@IEEEspecialpapernotice{{\sublargesize\emph{#1}\vspace*{1em}}}%
 \else%
-\def\@IEEEspecialpapernotice{{\\*[1.5ex]\sublargesize\textit{#1}}\vspace*{-2ex}}%
+\def\@IEEEspecialpapernotice{{\\*[1.5ex]\sublargesize\emph{#1}}\vspace*{-2ex}}%
 \fi}
 
 
