@@ -35,9 +35,17 @@
 
 %
 
+% TODO
+% - durchgehen, was alles kursiv / emphasized sein soll
+% - citations
+% - Abstract schreiben
+% - Figures austauschen, eigene draus machen, richtig referenzieren
+% - Referenzen aus Handout mit reinbringen
+
+%
+
 \begin{abstract}
-Eine kurze Beschreibung des Papers, worum gehts, was wird erklärt, was ist das Resultat.
-% TODO schreiben %
+In dieser Abhandlung wird die port-based Network Access Control Methode MAC Authentication Bypass (MAB) sowie deren Bedeutung für die Industrie 4.0 diskutiert. Hierzu wird zunächst die grundsätzliche Motivation für Netzwerkzugangskontrolle dargestellt sowie eine Übersicht gegeben, was Industrie 4.0 bedeutet und definiert. Anschließend werden die technischen Grundlagen von MAB sowie den damit verbundenen Mechanismen und Standards - im speziellen Extensible Authentication Protocol (EAP) und IEEE802.1X - herausgearbeitet. Es wird zudem ein typisches Einsatzszenario als Fallback für RADIUS erläutert. Danach wird auf die Relevanz für die Industrie 4.0 sowie den bereits heute existierenden Einsatz in der Praxis eingegangen. Zum Schluss werden die Vorteile bzw. Nutzen sowie Nachteile und Gefahren diskutiert, und mögliche Gegenmaßnahmen analysiert. 
 \end{abstract}
 
 \vspace{1em}
@@ -127,34 +135,15 @@ Oft als konkrete Implementierung eingesetzt werden RADIUS (Remote Authentication
 \end{figure}
 
 \subsection{Technische Umsetzung von MAB}
-MAB wird meistens als Fallback für EAP / dot1x, also z.B. RADIUS, eingesetzt. Versucht ein Supplicant sich neu zu authentifizieren wird zunächst sein Netzwerkverkehr geblockt. Der Authenticator versucht nun 
-\autoref{fig:mab-before-after} stellt den Netzwerkverkehr an einem Authenticator vor und nach MAB dar.
+MAB wird meistens als Fallback für EAP / dot1x, also z.B. RADIUS, eingesetzt. Versucht ein Supplicant sich neu zu authentifizieren wird zunächst dessen Netzwerkverkehr geblockt. Der Authenticator versucht nun den Supplicant zu authentifizieren. Hierzu wird zunächst ein EAP-Request-Identity an den Supplicant gesendet, um die Authentifizierung zu initieren. Diesen Request versteht der Supplicant allerdings nicht, da er aufgrund Alters des System oder Niedrigkosten-optimierten Herrstellung EAP nicht implementiert. Diese EAP-Requests werden wiederholt, bis ein dot1x Timeout erfolgt, woraufhin die Authentifizierung abgebrochen wird.\\
 
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=9cm]{figures/mab-before-after}
-	\caption{Traffic an einem Authenticator vor und nach MAB.}
-	\label{fig:mab-before-after}
-\end{figure}
+Anschließend beginnt die MAB Authentifizierung. Um die MAC-Adresse des Supplicant zu erlernen, wertet der Authenticator ein einzelnes Paket aus. Hierzu kann fast jedes beliebige Layer 2 oder 3 Paket genutzt werden. Der Authenticator sendet nun einen Access-Request an den Authentication Server. Dieser Request enthält in den Attributen \emph{Username} und \emph{Password} jeweils die MAC-Adresse des Supplicant. Lediglich das Format, in welchem die MAC-Adresse in den Attributen übertragen wird, unterscheidet sich. Zusätzlich findet sich in einigen Systemen noch das Attribute \emph{Calling-Station-ID} wieder, welches ebenfalls mit der MAC-Adresse befüllt und als sechs Gruppen mit jeweils zwei Hexadezimalstellen, in Großbuchstaben und mit Bindestrichen seperiert, übertragen wird. Welches Attribut konkret ausgewertet wird, hängt vom eingesetzten AAA-Server sowie dessen Konfiguration ab.\\
 
-- neuer unbekannter Supplicant
-- traffic wird geblockt
-- authenticator versucht MAC adresse zu lernen
-- wertet einzelnes Paket aus, blockt aber alles weitere dennoch ab
-- kann fast jedes layer 2 oder 3 Paket dazu nutzen
-- kein kryptographischer Prozessen zwischen Supplicant und AAA Server möglich
-- typischerweise Fallback für EAP
-- Switch z.B. versucht erst dot1x / EAP
-- EAP timeout
-- Switch sendet MAC Adresse an AAA-Server
-- Username = Password = Calling-Station-ID = MAC
-- AAA sendet accept / deny
-- MAC Adresse muss in AAA vorher eingepflegt sein
-- Switch hat MAC Adresse gelernt
-- Supplicant ist auf Port authentifiziert, state authorized
-- kann nun kommunizieren
+Der Authentication Server nimmt nun eine Bewertung vor und sendet entweder eine Accept oder Deny Response an den Authenticator zurück. Wichtige Voraussetzung hierzu ist, dass der Authentication Server die MAC-Adresse des Supplicant kennt, d.h. in einer Datenbank o.ä. zuvor eingepflegt wurde.\\
 
+Der Authenticator erhält bei Erfolg ein Accept zurück und hat nun die MAC-Adresse des Supplicant erlernt. Der Supplicant ist nun auf diesem Port authentifiziert (authorised state) und kann Kommunizieren.
 
+In \autoref{fig:mab-fallback} wird dieser Prozess noch einmal dargestellt.\\
 
 \begin{figure}[hbt]
 	\centering
