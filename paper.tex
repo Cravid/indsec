@@ -104,7 +104,7 @@ Das EAP (RFC 3748 \cite{aboba2004extensible}) ist ein von der Internet Engineeri
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=9cm]{figures/EAP}
-	\caption{EAP als Abstraktionsebene zur Authentifizierung. \cite{1561920}}
+	\caption{EAP als Abstraktionsebene zur Authentifizierung (angelehnt an: \cite{1561920}).}
 	\label{fig:eap}
 \end{figure}
 
@@ -116,7 +116,7 @@ Der IEEE802.1X (kurz auch dot1x genannt) ist Teil der IEEE802.1 Gruppe von Stand
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=9cm]{figures/dot1x}
-	\caption{IEEE802.1X schrittweise in den einzelnen Parteien dargestellt.}
+	\caption{IEEE802.1X schrittweise in den einzelnen Parteien dargestellt (angelehnt an: \cite{eap}.}
 	\label{fig:dot1x}
 \end{figure}
 
@@ -130,7 +130,7 @@ Oft als konkrete Implementierung eingesetzt werden RADIUS (Remote Authentication
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=9cm]{figures/radius}
-	\caption{RADIUS Authentifizierung.}
+	\caption{RADIUS Authentifizierung (angelehnt an: \cite{radius}).}
 	\label{fig:radius}
 \end{figure}
 
@@ -148,18 +148,14 @@ In \autoref{fig:mab-fallback} wird dieser Prozess noch einmal dargestellt.\\
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=9cm]{figures/mab-fallback}
-	\caption{MAB als Fallback für RADIUS.}
+	\caption{MAB als Fallback für RADIUS (Quelle: \cite{mab-deployment-guide})}
 	\label{fig:mab-fallback}
 \end{figure}
 
 %
 
 \section{Praxiseinsatz}
-In der Praxis wird MAB nicht nur als Fallback für RADIUS genutzt, sondern auch als zusätzliche Sicherheitsebene für \emph{NAC Network Authentication Control (NAC)}. Für Endgeräte die nicht über Layer 2 hinweg kommunizieren können, wie zum Beispiel IP-Phones, Kameras oder Drucker, die man dennoch nicht ungesichert im Netzwerk angeschlossen lassen möchte, bietet \emph{MAB} eine Möglichkeit diese Endgerät und weitere über verschiedene Mechanismen zu sichern. 
-
-\cite{mab-cisco}
-\cite{mab-non-cisco}
-\cite{mab-deployment-guide}
+In der Praxis wird MAB nicht nur als Fallback für RADIUS genutzt, sondern auch als zusätzliche Sicherheitsebene für \emph{NAC Network Authentication Control (NAC)}. Für Endgeräte die nicht über Layer 2 hinweg kommunizieren können, wie zum Beispiel IP-Phones, Kameras oder Drucker, die man dennoch nicht ungesichert im Netzwerk angeschlossen lassen möchte, bietet \emph{MAB} eine Möglichkeit diese Endgerät und weitere über verschiedene Mechanismen zu sichern.
 
 \subsection{Heutiger Einsatz}
 Heutzutage wird \emph{MAB} vor allem als Fallback genutzt, jedoch wie oben erwähnt, können durch das Provisionieren und Blockieren von MAC-Adressen auf verschiedenen Ebenen Policies erstellt werden um Endgeräte bereits auf Layer 2 Ebene im Netzwerk zu sperren. Zusätzlich dazu kann durch Architekturen gewährleistet werden, das diese MAC-Adressen durch ausgewählten User gepflegt werden, sodass die Datenbank in der sie provisioniert werden, nicht durch Dritte veränderbar ist. Dies verhindert zum einen Angriffe wie /emph{MAC-Spoofing}, sondern ermöglicht es auch mehrere hunderte oder tausende MAC-Adressen an einem zentralen Ort zu pflegen. Hierdurch kann eine Skalierbarkeit in die Breite ermöglicht werden, ohne die Architektur verändern zu müssen oder Endgeräte die nicht über Layer 2 hinweg kommunizieren können, aus dem Netzwerk auszusperren. Dies hat zusätzlich zu Folge, das Switches lokal nicht konfiguriert werden müssen, da die Policies und die Datenbank auf dem RADIUS-Server anliegen und die Switches lediglich mit diesem kommunizieren müssen.
