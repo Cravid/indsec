@@ -38,8 +38,6 @@
 % TODO
 % - durchgehen, was alles kursiv / emphasized sein soll
 % - citations
-% - Abstract schreiben
-% - Figures austauschen, eigene draus machen, richtig referenzieren
 % - Referenzen aus Handout mit reinbringen
 
 %
@@ -111,7 +109,7 @@ Das EAP (RFC 3748 \cite{aboba2004extensible}) ist ein von der Internet Engineeri
 EAP wurde zur Unterstützung von Authentifizierung in Netzwerke geschaffen, ohne dass  bei einer neuen Authentifizierung die Infrastruktur angepasst werden müsste. Es erlaubt den Einsatz eines Authentication Servers (AAA) und implementiert die Prozesse zwischen Supplicant, Authenticator und Authentication Server. Hierbei können auch mehrere Methoden in Folge genutzt werden und erlaubt so heterogene Netzwerke. Nach Authentifizierungsanfrage (Authentication Request) vom Authenticator an den Supplicant sendet dieser eine Antwort, welche die konkrete Authentifizierung (Benutzer, Password, Zertifikat, etc.) enthält. Der Authenticator erfragt beim Authentication Server die Authentifizierung und schließt den Prozess mit einer Success- oder Failure-Response an den Supplicant ab.
 
 \subsection{IEEE802.1X}
-Der IEEE802.1X (kurz auch dot1x genannt) ist Teil der IEEE802.1 Gruppe von Standards. Es dient zur port-based Network Access Control (PNAC) und definiert Authentifizierungsmechanismen für LAN und WLAN. Hierzu setzt es auf das EAP over LAN (EAPOL) auf. In \autoref{fig:dot1x} wird die Funktionsweise und die einzelnen Parteien in dot1x dargestellt.\\
+Der IEEE802.1X (kurz auch dot1x genannt) ist Teil der IEEE802.1 Gruppe von Standards \cite{5409813}. Es dient zur port-based Network Access Control (PNAC) und definiert Authentifizierungsmechanismen für LAN und WLAN. Hierzu setzt es auf das EAP over LAN (EAPOL) auf. In \autoref{fig:dot1x} wird die Funktionsweise und die einzelnen Parteien in dot1x dargestellt.\\
 
 \begin{figure}[hbt]
 	\centering
