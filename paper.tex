@@ -36,7 +36,7 @@
 %
 
 \begin{abstract}
-In dieser Abhandlung wird die port-based Network Access Control Methode MAC Authentication Bypass (MAB) sowie deren Bedeutung für die Industrie 4.0 diskutiert. Hierzu wird zunächst die grundsätzliche Motivation für Netzwerkzugangskontrolle dargestellt sowie eine Übersicht gegeben, was Industrie 4.0 bedeutet und definiert. Anschließend werden die technischen Grundlagen von MAB sowie den damit verbundenen Mechanismen und Standards - im speziellen Extensible Authentication Protocol (EAP) und IEEE802.1X - herausgearbeitet. Es wird zudem ein typisches Einsatzszenario als Fallback für RADIUS erläutert. Danach wird auf die Relevanz für die Industrie 4.0 sowie den bereits heute existierenden Einsatz in der Praxis eingegangen. Zum Schluss werden die Vorteile bzw. Nutzen sowie Nachteile und Gefahren diskutiert, und mögliche Gegenmaßnahmen analysiert. 
+In dieser Abhandlung wird die port-based Network Access Control Methode MAC Authentication Bypass (MAB) sowie deren Bedeutung für die Industrie 4.0 diskutiert. Hierzu wird zunächst die grundsätzliche Motivation für Netzwerkzugangskontrolle dargestellt sowie eine Übersicht gegeben, was Industrie 4.0 bedeutet und definiert. Anschließend werden die technischen Grundlagen von MAB sowie den damit verbundenen Mechanismen und Standards - im speziellen Extensible Authentication Protocol (EAP) und IEEE802.1X - herausgearbeitet. Es wird zudem ein typisches Einsatzszenario als Fallback für RADIUS erläutert. Danach wird auf die Relevanz für die Industrie 4.0 sowie den bereits heute existierenden Einsatz in der Praxis eingegangen. Zum Schluss werden die Vorteile bzw. Nutzen sowie Nachteile und Gefahren diskutiert, und mögliche Gegenmaßnahmen kurz dargestellt. 
 \end{abstract}
 
 \vspace{1em}
@@ -49,9 +49,9 @@ MAC Authentication Bypass, MAB, EAP, Extensible Authentication Protocol, IEEE802
 
 \vspace{1em}
 \section{Motivation}
-Die fortschreitende Vernetzung von IT Systemen bahnt sich ihren weg durch alle Bereiche unseres Lebens. Während ständige Vernetzung im Privaten- sowie Dienstleistungsumfeld heute alltäglich für uns sind, ist in der Industrie ein solcher Grad an Vernetzung noch nicht angekommen. So sind häufig im industriellen Umfeld noch Maschinen oder Systeme eingesetzt, welche aufgrund ihres Alters gar keine Vernetzung und Kommunikation erlauben, als auch existierende Vernetzungen lediglich für eine einfachste Form der Kommunikation, wie z.B. Systemüberwachung, eingesetzt.\\
+Die fortschreitende Vernetzung von IT Systemen bahnt sich ihren weg durch alle Bereiche unseres Lebens. Während ständige Vernetzung im Privaten- sowie Dienstleistungsumfeld heute alltäglich für uns sind, ist in der Industrie ein solcher Grad an Vernetzung noch nicht angekommen. So sind häufig im industriellen Umfeld noch Maschinen oder Systeme eingesetzt, welche aufgrund ihres Alters gar keine Vernetzung und Kommunikation erlauben, als auch existierende Vernetzungen lediglich für eine einfachste Form der Kommunikation, wie z.B. Systemüberwachung, nutzen.\\
 
-Industrie 4.0 stellt die aktuellste und vierte Stufe der industriellen Revolution dar. Nachdem die erste industrielle Revolution durch die Mechanisierung von Arbeitsprozessen, die zweite industrielle Revolution durch den Einsatz technischer Hilfsmittel zur Massenproduktion, und die dritte industrielle Revolution erste digitale Hilfsmittel zur Automatisierung geprägt waren, werden in der vierten industriellen Revolution alle Komponenten digitalisiert, vollumfänglich vernetzt als auch mit Intelligenz versehen, sodass diese Komponenten teils vollautonom dezentrale Entscheidungen treffen und untereinander Kommunizieren können. Der Mensch interagiert nur noch eingeschränkt und teilweise über neuartige Schnittstellen (human-computer-interfaces, HCI) mit den Systemen, um diese z.B. bei Konflikten oder benötigten Entscheidungen anzuleiten. Solche Systeme werden Cyberphysische Systeme (CPS) genannt und bilden das Rückgrat der Industrie 4.0. \cite{botthof2015zukunft}\\
+Industrie 4.0 stellt die vierte und aktuellste Stufe der industriellen Revolution dar. Nachdem die erste industrielle Revolution durch die Mechanisierung von Arbeitsprozessen, die zweite industrielle Revolution durch den Einsatz technischer Hilfsmittel zur Massenproduktion, und die dritte industrielle Revolution erste digitale Hilfsmittel zur Automatisierung geprägt waren, werden in der vierten industriellen Revolution alle Komponenten digitalisiert, vollumfänglich vernetzt sowie mit Intelligenz versehen, sodass diese Komponenten teils voll-autonom dezentrale Entscheidungen treffen und untereinander kommunizieren können. Der Mensch interagiert nur noch eingeschränkt und teilweise über neuartige Schnittstellen (human-computer-interfaces, HCI) mit den Systemen, um diese z.B. bei Konflikten oder benötigten Entscheidungen anzuleiten. Solche Systeme werden Cyberphysische Systeme (CPS) genannt und bilden das Rückgrat der Industrie 4.0. \cite{botthof2015zukunft}\\
 
 Mit Vernetzung und Kommunikation werden gleichzeitig solche Systeme allerdings auch stärker angreifbar und bedingen weitergehender Schutzmechanismen. Während in Office- oder User-Netzwerken Technologien und Protokolle zur Absicherung der Kommunikation bereits lange zum Standard gehören, sind die in der Industrie noch häufig eingesetzten Systeme und Protokolle auf eine Absicherung noch nicht ausgelegt. Gefahren bilden hierbei u.A.
 
@@ -77,9 +77,9 @@ Die PSK Methode ist simpel, hat jedoch insbesondere zwei große Nachteile:
 
 Zur Lösung dieses Problems wurden bereits für Enterprise Netzwerke verschiedene Strategien und Technologien entwickelt, um eine Netzwerkzugangskontrolle (Network Access Acontrol, NAC) teilnehmergenau zu realisieren, und so eine genauere Authentifizierung sowie Autorisierung auf verschiedene Ressourcen in Form von Rechtevergabe zu ermöglichen.\\
 
-Aufgrund des Alters vieler Systeme in der Industrie können diese Technologien allerdings nicht immer einfach übertragen werden, ohne Probleme in der Kompatibilität hervorzurufen, können gleichzeitig aber auch oft nicht einfach durch neue Systeme ausgetauscht werden. Dies betrifft u.A. Netzwerkdrucker, Sensoren, Kameras, älter Server, usw.\\
+Aufgrund des Alters vieler Systeme in der Industrie können diese Technologien allerdings nicht immer einfach übertragen werden, ohne Probleme in der Kompatibilität hervorzurufen, können gleichzeitig aber auch oft nicht einfach durch neue Systeme ausgetauscht werden. Dies betrifft u.A. Netzwerkdrucker, Sensoren, Kameras, ältere Server, usw.\\
 
-Aus diesem Grund werden für solche Systeme Fallback-Lösungen benötigt, sodass diese Systeme sich gegenüber der Netzwerkzugangskontrollinstanz authentifizieren und am Netzwerk teilnehmen können. Eine solche Fallback-Lösung stellt das \emph{MAC Authentication Bypass (MAB)} dar.
+Aus diesem Grund werden für solche Systeme Fallback-Lösungen benötigt, sodass diese Systeme sich gegenüber der Netzwerkzugangskontrollinstanz authentifizieren und am Netzwerk teilnehmen können. Eine solche Fallback-Lösung stellt das \emph{MAC Authentication Bypass (MAB)} dar, welches im Folgenden nähere Erläutert wird.
 % todo italic stehen lassen? was alles italic / bold? %
 
 %
@@ -90,7 +90,7 @@ Zur Realisierung der Netzwerkzugangskontrolle wird eine zentrale Authentifizieru
 
 \vspace{.5em}
 \subsection{Extensible Authentication Protocol (EAP)}
-Das EAP (RFC 3748 \cite{aboba2004extensible}) ist ein von der Internet Engineering Task Force (IETF) entwickeltes Framework zur Implementierung von Authentifizierung in Netzwerken. Es stellt Funktionen für verschiedene Authentifizierungsmethoden bereit, z.B. EAP-SIM, EAP-TTLS oder EAP-over-LAN (EAPOL). \cite{1561920} In \autoref{fig:eap} wird EAP als Abstraktionsebene dargestellt.\\
+Das EAP (RFC 3748 \cite{aboba2004extensible}) ist ein von der \emph{Internet Engineering Task Force (IETF)} entwickeltes Framework zur Implementierung von Authentifizierung in Netzwerken. Es stellt Funktionen für verschiedene Authentifizierungsmethoden bereit, z.B. EAP-SIM, EAP-TTLS oder EAP-over-LAN (EAPOL). \cite{1561920} In \autoref{fig:eap} wird EAP als Abstraktionsebene dargestellt.\\
 
 \begin{figure}[hbt]
 	\centering
@@ -99,11 +99,11 @@ Das EAP (RFC 3748 \cite{aboba2004extensible}) ist ein von der Internet Engineeri
 	\label{fig:eap}
 \end{figure}
 
-EAP wurde zur Unterstützung von Authentifizierung in Netzwerke geschaffen, ohne dass  bei einer neuen Authentifizierung die Infrastruktur angepasst werden müsste. Es erlaubt den Einsatz eines Authentication Servers (AAA) und implementiert die Prozesse zwischen Supplicant, Authenticator und Authentication Server. Hierbei können auch mehrere Methoden in Folge genutzt werden und erlaubt so heterogene Netzwerke. Nach Authentifizierungsanfrage (Authentication Request) vom Authenticator an den Supplicant sendet dieser eine Antwort, welche die konkrete Authentifizierung (Benutzer, Password, Zertifikat, etc.) enthält. Der Authenticator erfragt beim Authentication Server die Authentifizierung und schließt den Prozess mit einer Success- oder Failure-Response an den Supplicant ab.
+EAP wurde zur Unterstützung von Authentifizierung in Netzwerken geschaffen, ohne dass  bei einer neuen Authentifizierung die Infrastruktur angepasst werden muss. Es erlaubt den Einsatz eines Authentication Servers (AAA) und implementiert die Prozesse zwischen Supplicant, Authenticator und Authentication Server. Hierbei können auch mehrere Methoden in Folge genutzt werden und erlaubt so heterogene Netzwerke. Nach Authentifizierungsanfrage (Authentication Request) vom Authenticator an den Supplicant sendet dieser eine Antwort, welche die konkrete Authentifizierung (Benutzer, Password, Zertifikat, etc.) enthält. Der Authenticator erfragt beim Authentication Server die Authentifizierung und schließt den Prozess mit einer Success- oder Failure-Response an den Supplicant ab.
 
 \vspace{.5em}
 \subsection{IEEE802.1X}
-Der IEEE802.1X (kurz auch dot1x genannt) ist Teil der IEEE802.1 Gruppe von Standards \cite{5409813}. Es dient zur port-based Network Access Control (PNAC) und definiert Authentifizierungsmechanismen für LAN und WLAN. Hierzu setzt es auf das EAP over LAN (EAPOL) auf. In \autoref{fig:dot1x} wird die Funktionsweise und die einzelnen Parteien in dot1x dargestellt.\\
+Der IEEE802.1X (kurz auch dot1x genannt) ist Teil der IEEE802.1 Gruppe von Standards \cite{5409813}. Es dient zur port-based Network Access Control (PNAC) und definiert Authentifizierungsmechanismen für LAN und WLAN. Hierzu setzt es auf das EAP-over-LAN (EAPOL) auf. In \autoref{fig:dot1x} wird die Funktionsweise und die einzelnen Parteien in dot1x dargestellt.\\
 
 \begin{figure}[hbt]
 	\centering
@@ -118,7 +118,7 @@ Unkontrollierte Ports werden durch die dot1x PAE zur Übermittlung von EAPOL Pak
 
 \vspace{.5em}
 \subsection{RADIUS und Active Directory}
-Oft als konkrete Implementierung eingesetzt werden RADIUS (Remote Authentication Dial-In User Service) oder Microsoft Active Directory. Diese bieten zentralisierte AAA-Server und sind dot1x konform, unterstützen also EAPOL. In \autoref{fig:radius} wird der Authentifizierungsprozess in Request / Response dargestellt.
+Oft als konkrete Implementierung eingesetzt werden RADIUS (Remote Authentication Dial-In User Service) oder Microsoft Active Directory. Diese bieten zentralisierte AAA-Server und sind dot1x konform, unterstützen also EAPOL. In \autoref{fig:radius} wird der Authentifizierungsprozess in Request und Response dargestellt.
 
 \begin{figure}[hbt]
 	\centering
@@ -131,13 +131,11 @@ Oft als konkrete Implementierung eingesetzt werden RADIUS (Remote Authentication
 \subsection{Technische Umsetzung von MAB}
 MAB wird meistens als Fallback für EAP / dot1x, also z.B. RADIUS, eingesetzt. Versucht ein Supplicant sich neu zu authentifizieren wird zunächst dessen Netzwerkverkehr geblockt. Der Authenticator versucht nun den Supplicant zu authentifizieren. Hierzu wird zunächst ein EAP-Request-Identity an den Supplicant gesendet, um die Authentifizierung zu initieren. Diesen Request versteht der Supplicant allerdings nicht, da er aufgrund Alters des System oder Niedrigkosten-optimierten Herrstellung EAP nicht implementiert. Diese EAP-Requests werden wiederholt, bis ein dot1x Timeout erfolgt, woraufhin die Authentifizierung abgebrochen wird. \cite{eap}\\
 
-Anschließend beginnt die MAB Authentifizierung. Um die MAC-Adresse des Supplicant zu erlernen, wertet der Authenticator ein einzelnes Paket aus. Hierzu kann fast jedes beliebige Layer 2 oder 3 Paket genutzt werden. Der Authenticator sendet nun einen Access-Request an den Authentication Server. Dieser Request enthält in den Attributen \emph{Username} und \emph{Password} jeweils die MAC-Adresse des Supplicant. \cite{mab-deployment-guide} Lediglich das Format, in welchem die MAC-Adresse in den Attributen übertragen wird, unterscheidet sich. Zusätzlich findet sich in einigen Systemen noch das Attribute \emph{Calling-Station-ID} wieder, welches ebenfalls mit der MAC-Adresse befüllt und als sechs Gruppen mit jeweils zwei Hexadezimalstellen, in Großbuchstaben und mit Bindestrichen seperiert, übertragen wird. Welches Attribut konkret ausgewertet wird, hängt vom eingesetzten AAA-Server sowie dessen Konfiguration ab.\\
+Anschließend beginnt die MAB Authentifizierung. Um die MAC-Adresse des Supplicant zu erlernen, wertet der Authenticator ein einzelnes Paket aus. Hierzu kann fast jedes beliebige OSI-Layer 2 oder 3 Paket genutzt werden. Der Authenticator sendet nun einen Access-Request an den Authentication Server. Dieser Request enthält in den Attributen \emph{Username} und \emph{Password} jeweils die MAC-Adresse des Supplicant. \cite{mab-deployment-guide} Lediglich das Format, in welchem die MAC-Adresse in den Attributen übertragen wird, unterscheidet sich. Zusätzlich findet sich in einigen Systemen noch das Attribute \emph{Calling-Station-ID} wieder, welches ebenfalls mit der MAC-Adresse befüllt und als sechs Gruppen mit jeweils zwei Hexadezimalstellen, in Großbuchstaben und mit Bindestrichen seperiert, übertragen wird. Welches Attribut konkret ausgewertet wird, hängt vom eingesetzten AAA-Server sowie dessen Konfiguration ab.\\
 
-Der Authentication Server nimmt nun eine Bewertung vor und sendet entweder eine Accept oder Deny Response an den Authenticator zurück. Wichtige Voraussetzung hierzu ist, dass der Authentication Server die MAC-Adresse des Supplicant kennt, d.h. in einer Datenbank o.ä. zuvor eingepflegt wurde.\\
+Der Authentication Server nimmt nun eine Bewertung vor und sendet entweder eine Accept- oder Deny-Response an den Authenticator zurück. Wichtige Voraussetzung hierzu ist, dass der Authentication Server die MAC-Adresse des Supplicant kennt, d.h. in einer Datenbank o.ä. zuvor eingepflegt wurde.\\
 
-Der Authenticator erhält bei Erfolg ein Accept zurück und hat nun die MAC-Adresse des Supplicant erlernt. Der Supplicant ist nun auf diesem Port authentifiziert (authorised state) und kann Kommunizieren.
-
-In \autoref{fig:mab-fallback} wird dieser Prozess noch einmal dargestellt.\\
+Der Authenticator erhält bei Erfolg ein Accept zurück und hat nun die MAC-Adresse des Supplicant erlernt. Der Supplicant ist nun auf diesem Port authentifiziert (authorised state) und kann kommunizieren. In \autoref{fig:mab-fallback} wird dieser Prozess noch einmal dargestellt.\\
 
 \begin{figure}[hbt]
 	\centering
